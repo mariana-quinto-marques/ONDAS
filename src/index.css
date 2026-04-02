@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ocean: #0E7490;
+  --color-ocean-dark: #155E75;
+  --color-ocean-light: #67E8F9;
+  --color-teal: #0D9488;
+  --color-emerald: #059669;
+  --color-sand: #C8A96E;
+  --color-sand-light: #DFC9A0;
+  --color-rose: #E87461;
+  --color-condition-good: #0D9488;
+  --color-condition-fair: #D4A24E;
+  --color-condition-poor: #E87461;
+  --color-bg: #FAF6F1;
+  --color-surface: #FFFFFF;
+  --color-surface-warm: #F5EFE7;
+  --color-text: #1B2D3A;
+  --color-text-secondary: #6B8299;
+  --color-border: #E4DDD4;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'DM Serif Display', Georgia, serif;
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0 !important;
+  background: #D4E6EC !important;
+}
+
+.leaflet-pane {
+  z-index: 1 !important;
+}
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 2 !important;
+}
+
+.leaflet-control-zoom {
+  display: none !important;
+}
+
+/* Leaflet tooltip */
+.leaflet-tooltip {
+  background: rgba(255,255,255,0.95) !important;
+  border: 1px solid #E4DDD4 !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  color: #1B2D3A !important;
+}
+
+.leaflet-tooltip-top::before {
+  border-top-color: rgba(255,255,255,0.95) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glass card effect — light cream glass */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(228, 221, 212, 0.6);
+}
+
+/* Map gradient overlays */
+.map-fade {
+  position: relative;
+}
+
+.map-fade::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, #FAF6F1, transparent);
+  z-index: 400;
+  pointer-events: none;
+}
+
+.map-fade::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, #FAF6F1 0%, transparent 100%);
+  z-index: 400;
+  pointer-events: none;
+}

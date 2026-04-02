@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(mv ondas-temp/* ondas-temp/.* .)",
+      "Bash(rm -rf ondas-temp)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm run:*)"
+    ]
+  }
+}
