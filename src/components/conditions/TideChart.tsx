@@ -50,7 +50,7 @@ export function TideChart({ times, seaLevels }: TideChartProps) {
   return (
     <div className="rounded-2xl bg-white/80 backdrop-blur-sm border border-border/60 p-3">
       <h4 className="font-display mb-2 text-base text-text">Tide</h4>
-      <svg viewBox={`0 0 ${width} ${height + 20}`} className="w-full">
+      <svg viewBox={`0 -14 ${width} ${height + 34}`} className="w-full">
         <defs>
           <linearGradient id="tideGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#0E7490" />

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, MapPin, Lightbulb } from 'lucide-react';
+import { ArrowLeft, MapPin, Lightbulb, Navigation } from 'lucide-react';
 import { spots } from '../data/spots';
 import { useSpotConditions } from '../hooks/useSpotConditions';
 import { useAllSpotsConditions } from '../hooks/useAllSpotsConditions';
@@ -61,6 +61,16 @@ export function SpotDetailPage() {
         </div>
 
         <p className="mt-2 text-sm text-text-secondary">{spot.description}</p>
+
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${spot.coordinates.lat},${spot.coordinates.lng}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex items-center gap-2 rounded-full bg-ocean px-4 py-2 text-sm font-medium text-white no-underline transition-colors hover:bg-ocean-dark"
+        >
+          <Navigation size={14} />
+          Get me there
+        </a>
       </div>
 
       <div className="space-y-4 p-4">
