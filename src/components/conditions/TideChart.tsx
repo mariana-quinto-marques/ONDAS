@@ -10,8 +10,9 @@ export function TideChart({ times, seaLevels }: TideChartProps) {
 
   // Take next 24 hours
   const now = new Date();
-  const startIdx = Math.max(0, times.findIndex((t) => new Date(t) >= now));
-  const end = Math.min(startIdx + 24, times.length);
+  const nextIdx = times.findIndex((t) => new Date(t) >= now);
+  const startIdx = Math.max(0, nextIdx - 1);
+  const end = Math.min(startIdx + 25, times.length);
   const slicedTimes = times.slice(startIdx, end);
   const slicedLevels = seaLevels.slice(startIdx, end);
 
@@ -29,6 +30,23 @@ export function TideChart({ times, seaLevels }: TideChartProps) {
     const y = height - padding - ((level - min) / range) * (height - 2 * padding);
     return `${x},${y}`;
   });
+
+  // Current time marker — interpolate position on the curve
+  const nowMs = now.getTime();
+  const startMs = new Date(slicedTimes[0]).getTime();
+  const endMs = new Date(slicedTimes[slicedTimes.length - 1]).getTime();
+  const nowFraction = (nowMs - startMs) / (endMs - startMs);
+  let nowX: number | null = null;
+  let nowY: number | null = null;
+  if (nowFraction >= 0 && nowFraction <= 1) {
+    const floatIdx = nowFraction * (slicedLevels.length - 1);
+    const lo = Math.floor(floatIdx);
+    const hi = Math.min(lo + 1, slicedLevels.length - 1);
+    const t = floatIdx - lo;
+    const nowLevel = slicedLevels[lo] * (1 - t) + slicedLevels[hi] * t;
+    nowX = padding + nowFraction * (width - 2 * padding);
+    nowY = height - padding - ((nowLevel - min) / range) * (height - 2 * padding);
+  }
 
   // Find extremes inline
   const extremes: { time: string; height: number; type: 'high' | 'low'; x: number; y: number }[] = [];
@@ -58,6 +76,12 @@ export function TideChart({ times, seaLevels }: TideChartProps) {
           </linearGradient>
         </defs>
         <polyline points={points.join(' ')} fill="none" stroke="url(#tideGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        {nowX !== null && nowY !== null && (
+          <g>
+            <circle cx={nowX} cy={nowY} r="3" fill="#E97451" />
+            <text x={nowX} y={nowY + 10} textAnchor="middle" fill="#E97451" fontSize="6" fontWeight="500">Now</text>
+          </g>
+        )}
         {extremes.map((ext, i) => (
           <g key={i}>
             <circle cx={ext.x} cy={ext.y} r="3" fill={ext.type === 'high' ? '#0E7490' : '#6B8299'} />
