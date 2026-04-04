@@ -44,7 +44,7 @@ export function SpotDetailPage() {
     <div className="h-full overflow-y-auto pb-20 lg:pb-4">
     <div className="mx-auto max-w-2xl">
       <div className="p-4">
-        <Link to="/" className="mb-3 inline-flex items-center gap-1 text-sm text-ocean hover:text-ocean-dark no-underline transition-colors">
+        <Link to="/" className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-border/50 px-3 py-1.5 text-sm font-medium text-ocean hover:text-ocean-dark no-underline transition-colors">
           <ArrowLeft size={16} />
           All spots
         </Link>
