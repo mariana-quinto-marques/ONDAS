@@ -12,4 +12,5 @@ export interface Spot {
   description: string;
   funFacts: string[];
   difficulty: Difficulty;
+  googleRating: { stars: number; reviewCount: number };
 }

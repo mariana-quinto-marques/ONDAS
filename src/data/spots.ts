@@ -16,6 +16,7 @@ export const spots: Spot[] = [
       'The thermal wind effect from the Lima river valley creates consistently strong afternoon winds in summer.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.5, reviewCount: 2500 },
   },
   {
     id: 'matosinhos',
@@ -31,6 +32,7 @@ export const spots: Spot[] = [
       'After surfing, the nearby Matosinhos seafood restaurants are considered some of the best in the country.',
     ],
     difficulty: 'beginner',
+    googleRating: { stars: 4.4, reviewCount: 12000 },
   },
   {
     id: 'espinho',
@@ -46,6 +48,7 @@ export const spots: Spot[] = [
       'Coastal erosion has been so severe that several streets that existed in the 1900s are now underwater.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.3, reviewCount: 3100 },
   },
   {
     id: 'moledo',
@@ -61,6 +64,7 @@ export const spots: Spot[] = [
       'The Insua fortress, visible from the beach, was built in the 16th century to defend against pirates.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.5, reviewCount: 1500 },
   },
 
   // === CENTRO ===
@@ -78,6 +82,7 @@ export const spots: Spot[] = [
       'Traditional Nazare fishermen used to launch their boats directly through the massive surf using oxen.',
     ],
     difficulty: 'advanced',
+    googleRating: { stars: 4.7, reviewCount: 8200 },
   },
   {
     id: 'supertubos',
@@ -93,6 +98,7 @@ export const spots: Spot[] = [
       'The wave breaks so close to shore that spectators can watch surfers get barreled from just meters away.',
     ],
     difficulty: 'advanced',
+    googleRating: { stars: 4.6, reviewCount: 4200 },
   },
   {
     id: 'baleal',
@@ -108,6 +114,7 @@ export const spots: Spot[] = [
       'Peniche was once an island — the sandy tombolo connecting it to the mainland formed naturally over centuries.',
     ],
     difficulty: 'all',
+    googleRating: { stars: 4.6, reviewCount: 6300 },
   },
   {
     id: 'foz-do-arelho',
@@ -123,6 +130,7 @@ export const spots: Spot[] = [
       'The thermal contrast between the lagoon and the ocean creates a reliable afternoon sea breeze in summer.',
     ],
     difficulty: 'all',
+    googleRating: { stars: 4.5, reviewCount: 3400 },
   },
   {
     id: 'vieira',
@@ -138,6 +146,7 @@ export const spots: Spot[] = [
       'The beach is so uncrowded that you can often surf with no one else in sight, even on good swell days.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.3, reviewCount: 1200 },
   },
 
   // === LISBOA ===
@@ -155,6 +164,7 @@ export const spots: Spot[] = [
       'The natural amphitheater-shaped cliffs make it one of the best spots in Europe for watching surf competitions.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.7, reviewCount: 3500 },
   },
   {
     id: 'coxos',
@@ -170,6 +180,7 @@ export const spots: Spot[] = [
       'Local surfers have been riding Coxos since the late 1960s, making it one of the earliest surf spots discovered in Portugal.',
     ],
     difficulty: 'advanced',
+    googleRating: { stars: 4.6, reviewCount: 850 },
   },
   {
     id: 'guincho',
@@ -185,6 +196,7 @@ export const spots: Spot[] = [
       'Wind speeds at Guincho regularly exceed 40 km/h in summer, earning it the reputation as one of the windiest beaches in Europe.',
     ],
     difficulty: 'advanced',
+    googleRating: { stars: 4.6, reviewCount: 10500 },
   },
   {
     id: 'caparica',
@@ -200,6 +212,7 @@ export const spots: Spot[] = [
       'The beach is just a 15-minute drive from downtown Lisbon, making it the capital\'s surf backyard.',
     ],
     difficulty: 'all',
+    googleRating: { stars: 4.4, reviewCount: 15200 },
   },
   {
     id: 'carcavelos',
@@ -215,6 +228,7 @@ export const spots: Spot[] = [
       'The beach break works on virtually any swell direction, making it one of the most consistent spots near Lisbon.',
     ],
     difficulty: 'beginner',
+    googleRating: { stars: 4.4, reviewCount: 8200 },
   },
 
   // === ALENTEJO ===
@@ -232,6 +246,7 @@ export const spots: Spot[] = [
       'The Alentejo coastline is part of the Vicentina Natural Park, one of the best preserved coastal areas in Europe.',
     ],
     difficulty: 'beginner',
+    googleRating: { stars: 4.4, reviewCount: 2100 },
   },
   {
     id: 'porto-covo',
@@ -247,6 +262,7 @@ export const spots: Spot[] = [
       'The Fishermen\'s Trail (Rota Vicentina) passes through Porto Covo, part of one of Europe\'s best coastal hikes.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.5, reviewCount: 3200 },
   },
 
   // === ALGARVE ===
@@ -264,6 +280,7 @@ export const spots: Spot[] = [
       'Despite being in the Algarve, the water on this west-facing coast is significantly cooler than the south-facing beaches.',
     ],
     difficulty: 'all',
+    googleRating: { stars: 4.7, reviewCount: 5100 },
   },
   {
     id: 'arrifana',
@@ -279,6 +296,7 @@ export const spots: Spot[] = [
       'The dramatic 50-meter-high cliffs surrounding the bay create a natural amphitheater effect.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.7, reviewCount: 4300 },
   },
   {
     id: 'tonel',
@@ -294,6 +312,7 @@ export const spots: Spot[] = [
       'The unique position at Europe\'s southwestern corner means Tonel catches both west and south swells.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.6, reviewCount: 3400 },
   },
   {
     id: 'meia-praia',
@@ -309,6 +328,7 @@ export const spots: Spot[] = [
       'The Levante (east wind) creates perfect flat-water kite conditions on the sheltered bay.',
     ],
     difficulty: 'all',
+    googleRating: { stars: 4.5, reviewCount: 7400 },
   },
   {
     id: 'alvor',
@@ -324,6 +344,7 @@ export const spots: Spot[] = [
       'The village of Alvor was an important fishing port during the Moorish period and still retains its traditional character.',
     ],
     difficulty: 'beginner',
+    googleRating: { stars: 4.4, reviewCount: 2200 },
   },
   {
     id: 'fuseta',
@@ -339,6 +360,7 @@ export const spots: Spot[] = [
       'The area is famous for its seafood, especially clams and oysters harvested directly from the lagoon.',
     ],
     difficulty: 'all',
+    googleRating: { stars: 4.5, reviewCount: 3600 },
   },
 
   // === ACORES ===
@@ -356,6 +378,7 @@ export const spots: Spot[] = [
       'Water temperature in the Azores stays relatively warm year-round (17-23C) thanks to the Gulf Stream.',
     ],
     difficulty: 'intermediate',
+    googleRating: { stars: 4.5, reviewCount: 1500 },
   },
   {
     id: 'praia-da-vitoria',
@@ -371,6 +394,7 @@ export const spots: Spot[] = [
       'The Azores are one of only two places in Europe (along with the Canaries) where you can spot whale species year-round.',
     ],
     difficulty: 'beginner',
+    googleRating: { stars: 4.4, reviewCount: 1800 },
   },
 
   // === MADEIRA ===
@@ -388,5 +412,6 @@ export const spots: Spot[] = [
       'Despite being a subtropical island, Madeira receives consistent North Atlantic groundswells that create powerful surf.',
     ],
     difficulty: 'advanced',
+    googleRating: { stars: 4.6, reviewCount: 620 },
   },
 ];

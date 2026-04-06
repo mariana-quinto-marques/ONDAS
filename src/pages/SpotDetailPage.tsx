@@ -11,6 +11,7 @@ import { TideChart } from '../components/conditions/TideChart';
 import { ConditionReportForm } from '../components/community/ConditionReportForm';
 import { ReportsList } from '../components/community/ReportsList';
 import { SportIcon } from '../components/spots/SportIcon';
+import { StarRating } from '../components/spots/StarRating';
 import { regionColors } from '../data/regions';
 
 export function SpotDetailPage() {
@@ -58,6 +59,10 @@ export function SpotDetailPage() {
           <div className="flex items-center gap-1">
             {spot.sportTypes.map((sport) => (<SportIcon key={sport} sport={sport} size={14} />))}
           </div>
+        </div>
+
+        <div className="mt-2">
+          <StarRating stars={spot.googleRating.stars} reviewCount={spot.googleRating.reviewCount} size={14} />
         </div>
 
         <p className="mt-2 text-sm text-text-secondary">{spot.description}</p>

@@ -7,6 +7,7 @@ import { SportIcon } from './SportIcon';
 import { getBestSportForConditions } from '../../utils/conditionScoring';
 import { formatWaveHeight, formatWindSpeed, formatTemperature } from '../../utils/formatters';
 import { degreesToCompass } from '../../utils/windDirection';
+import { StarRating } from './StarRating';
 import { regionColors } from '../../data/regions';
 
 interface SpotCardProps {
@@ -38,6 +39,7 @@ export function SpotCard({ spot, conditions }: SpotCardProps) {
               {spot.region}
             </span>
           </div>
+          <StarRating stars={spot.googleRating.stars} reviewCount={spot.googleRating.reviewCount} size={10} />
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5">
