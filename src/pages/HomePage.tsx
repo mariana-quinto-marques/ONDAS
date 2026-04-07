@@ -6,7 +6,7 @@ import { SpotList } from '../components/spots/SpotList';
 import { SpotCardCompact } from '../components/spots/SpotCardCompact';
 import { useAllSpotsConditions } from '../hooks/useAllSpotsConditions';
 import { useFilterStore } from '../stores/filterStore';
-import { getBestSportForConditions } from '../utils/conditionScoring';
+import { getBestSportForConditions, scoreForSport } from '../utils/conditionScoring';
 import type { ConditionQuality } from '../types/conditions';
 
 const qualityRank: Record<ConditionQuality, number> = { good: 0, fair: 1, poor: 2 };
@@ -17,20 +17,20 @@ export function HomePage() {
   const activeSport = useFilterStore((s) => s.activeSport);
 
   const sorted = useMemo(() => {
-    const filtered = activeSport
-      ? spots.filter((s) => s.sportTypes.includes(activeSport))
-      : spots;
+    if (!conditions || conditions.length === 0) return spots;
 
-    if (!conditions || conditions.length === 0) return filtered;
-
-    return [...filtered].sort((a, b) => {
+    return [...spots].sort((a, b) => {
       const ca = conditions.find((c) => c.spotId === a.id);
       const cb = conditions.find((c) => c.spotId === b.id);
       if (!ca && !cb) return 0;
       if (!ca) return 1;
       if (!cb) return -1;
-      const qa = getBestSportForConditions(a.sportTypes, ca.marine, ca.weather).quality;
-      const qb = getBestSportForConditions(b.sportTypes, cb.marine, cb.weather).quality;
+      const qa = activeSport
+        ? scoreForSport(activeSport, ca.marine, ca.weather)
+        : getBestSportForConditions(a.sportTypes, ca.marine, ca.weather).quality;
+      const qb = activeSport
+        ? scoreForSport(activeSport, cb.marine, cb.weather)
+        : getBestSportForConditions(b.sportTypes, cb.marine, cb.weather).quality;
       return qualityRank[qa] - qualityRank[qb];
     });
   }, [conditions, activeSport]);

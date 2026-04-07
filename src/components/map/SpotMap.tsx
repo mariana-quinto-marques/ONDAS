@@ -19,10 +19,6 @@ interface SpotMapProps {
 export function SpotMap({ spots, conditions }: SpotMapProps) {
   const activeSport = useFilterStore((s) => s.activeSport);
 
-  const filtered = activeSport
-    ? spots.filter((s) => s.sportTypes.includes(activeSport))
-    : spots;
-
   return (
     <MapContainer
       bounds={PORTUGAL_BOUNDS}
@@ -41,7 +37,7 @@ export function SpotMap({ spots, conditions }: SpotMapProps) {
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         subdomains="abcd"
       />
-      {filtered.map((spot) => (
+      {spots.map((spot) => (
         <SpotMarker
           key={spot.id}
           spot={spot}
