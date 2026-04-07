@@ -1,8 +1,8 @@
 import { CircleMarker, Tooltip } from 'react-leaflet';
 import { useNavigate } from 'react-router-dom';
-import type { Spot } from '../../types/spot';
+import type { Spot, SportType } from '../../types/spot';
 import type { SpotConditions } from '../../types/conditions';
-import { getBestSportForConditions } from '../../utils/conditionScoring';
+import { scoreForSport, getBestSportForConditions } from '../../utils/conditionScoring';
 import { formatWaveHeight } from '../../utils/formatters';
 
 const qualityColors = {
@@ -11,18 +11,39 @@ const qualityColors = {
   poor: '#E87461',
 };
 
+const sportColors: Record<SportType, string> = {
+  surf: '#0E7490',
+  kitesurf: '#7C3AED',
+  windsurf: '#0D9488',
+  paddle: '#059669',
+};
+
 interface SpotMarkerProps {
   spot: Spot;
   conditions?: SpotConditions;
+  activeSport?: SportType | null;
 }
 
-export function SpotMarker({ spot, conditions }: SpotMarkerProps) {
+export function SpotMarker({ spot, conditions, activeSport }: SpotMarkerProps) {
   const navigate = useNavigate();
-  const quality = conditions
-    ? getBestSportForConditions(spot.sportTypes, conditions.marine, conditions.weather).quality
-    : 'fair';
 
-  const color = qualityColors[quality];
+  let color: string;
+  if (activeSport) {
+    const quality = conditions
+      ? scoreForSport(activeSport, conditions.marine, conditions.weather)
+      : 'fair';
+    // Use sport color at full opacity for good, muted for fair/poor
+    color = quality === 'good'
+      ? sportColors[activeSport]
+      : quality === 'fair'
+      ? qualityColors.fair
+      : qualityColors.poor;
+  } else {
+    const quality = conditions
+      ? getBestSportForConditions(spot.sportTypes, conditions.marine, conditions.weather).quality
+      : 'fair';
+    color = qualityColors[quality];
+  }
 
   return (
     <CircleMarker
