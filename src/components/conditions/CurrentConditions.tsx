@@ -4,10 +4,11 @@ import {
 import type { MarineConditions, WeatherConditions } from '../../types/conditions';
 import type { SportType } from '../../types/spot';
 import { ConditionBadge } from '../spots/ConditionBadge';
+import { SportIcon } from '../spots/SportIcon';
 import { WindCompass } from './WindCompass';
 import { WaveIndicator } from './WaveIndicator';
 import { WeatherIcon } from './WeatherIcon';
-import { getBestSportForConditions } from '../../utils/conditionScoring';
+import { scoreForSport } from '../../utils/conditionScoring';
 import { formatTemperature, formatWindSpeed, formatWaveHeight, formatUV, formatHour } from '../../utils/formatters';
 import { degreesToCompass } from '../../utils/windDirection';
 import { getCurrentTideStatus } from '../../utils/tideCalculation';
@@ -21,14 +22,24 @@ interface CurrentConditionsProps {
 }
 
 export function CurrentConditions({ marine, weather, sportTypes, tideTimes, tideSeaLevels }: CurrentConditionsProps) {
-  const best = getBestSportForConditions(sportTypes, marine, weather);
+  const sportScores = sportTypes.map((sport) => ({
+    sport,
+    quality: scoreForSport(sport, marine, weather),
+  }));
   const tideStatus = tideTimes && tideSeaLevels ? getCurrentTideStatus(tideTimes, tideSeaLevels) : null;
 
   return (
     <div className="rounded-2xl bg-white/80 backdrop-blur-sm border border-border/60 p-4">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-display text-lg text-text">Current Conditions</h3>
-        <ConditionBadge quality={best.quality} />
+        <div className="flex items-center gap-2">
+          {sportScores.map(({ sport, quality }) => (
+            <div key={sport} className="flex items-center gap-1">
+              <SportIcon sport={sport} size={12} />
+              <ConditionBadge quality={quality} />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">

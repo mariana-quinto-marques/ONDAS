@@ -22,8 +22,8 @@ function scoreSurf(marine: MarineConditions, weather: WeatherConditions): Condit
   const { waveHeight, wavePeriod } = marine;
   const { windSpeed } = weather;
 
-  if (waveHeight >= 1 && waveHeight <= 2.5 && wavePeriod > 10 && windSpeed < 20) return 'good';
-  if (waveHeight >= 0.5 && waveHeight <= 3.5 && wavePeriod >= 7) return 'fair';
+  if (waveHeight >= 0.8 && waveHeight <= 3 && wavePeriod > 10 && windSpeed < 25) return 'good';
+  if (waveHeight >= 0.5 && waveHeight <= 4 && wavePeriod >= 7 && windSpeed < 40) return 'fair';
   return 'poor';
 }
 

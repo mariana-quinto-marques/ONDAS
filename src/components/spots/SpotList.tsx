@@ -50,6 +50,7 @@ export function SpotList({ spots, conditions }: SpotListProps) {
           key={spot.id}
           spot={spot}
           conditions={conditions?.find((c) => c.spotId === spot.id)}
+          activeSport={activeSport}
         />
       ))}
     </div>
